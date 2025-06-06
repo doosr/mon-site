@@ -131,8 +131,6 @@
             letter-spacing: 1px;
             box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
             animation: fadeInUp 1s ease-out 0.6s both;
-            cursor: pointer;
-            border: none;
         }
 
         .cta-button:hover {
@@ -517,79 +515,40 @@
             transform: scale(1.1);
         }
 
-        /* QR Scanner Modal */
-        .qr-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .qr-content {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 90%;
-            width: 500px;
+        .cart-total {
             text-align: center;
-            position: relative;
-        }
-
-        .close-qr {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 2rem 0;
             color: #e74c3c;
-            transition: color 0.3s ease;
+            padding: 1rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
         }
 
-        .close-qr:hover {
-            color: #c0392b;
-        }
-
-        #scanner-container {
+        .checkout-btn {
             width: 100%;
-            height: 300px;
-            margin: 20px auto;
-            background: #f0f0f0;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        #qr-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(39, 174, 96, 0.3);
         }
 
-        #scanner-frame {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            height: 200px;
-            border: 3px solid #3498db;
-            border-radius: 10px;
-            box-shadow: 0 0 0 1000px rgba(0,0,0,0.7);
-            z-index: 10;
-        }
-
-        #scanner-instructions {
-            margin-top: 20px;
-            color: #666;
-            font-size: 1rem;
+        .checkout-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         /* Footer */
@@ -597,6 +556,7 @@
             background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
             padding: 3rem 0 1rem;
+            margin-top: 4rem;
         }
 
         .footer-content {
@@ -633,7 +593,6 @@
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
-            justify-content: center;
         }
 
         .social-link {
@@ -681,10 +640,6 @@
 
         .notification.show {
             transform: translateX(0);
-        }
-
-        .notification.error {
-            background: #e74c3c;
         }
 
         /* Animations */
@@ -752,10 +707,6 @@
             .slide-content h2 {
                 font-size: 2rem;
             }
-            
-            .social-links {
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -784,7 +735,7 @@
         <div class="hero-content">
             <h1>Bienvenue à la Résidence Haroun</h1>
             <p>Votre destination de rêve pour des vacances inoubliables à La Chebba</p>
-            <button onclick="openQRScanner()" class="cta-button">Scanner la table</button>
+            <a href="#menu" class="cta-button">Découvrir notre restaurant</a>
         </div>
     </section>
 
@@ -822,6 +773,8 @@
                     <h3>Accès Plage</h3>
                     <p>Profitez d'un accès direct aux magnifiques plages de sable fin de La Chebba</p>
                 </div>
+        
+              
                 <div class="feature-card">
                     <div class="feature-icon">🅿️</div>
                     <h3>Parking Gratuit</h3>
@@ -862,46 +815,42 @@
                     <div class="carousel-slide" style="background-image: url('https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/476856757_122212212026034185_2384580341636828780_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=jkzgn0s9hrMQ7kNvwFQmHfG&_nc_oc=Adn6a0TQ0W4J-7laxEg2GiCHy9aE0GAqexML9N3fX5iHhe1hLKaSEKDdx84peD_Ob-E&_nc_zt=23&_nc_ht=scontent.ftun10-1.fna&_nc_gid=3LYSVhqcWq5NuhC9FqDGhg&oh=00_AfNVHOv45ZmSqaHq8FhuPGpmnA7Oqvn-_IqJrpOhAy7sZA&oe=68488B8A');">
                         <div class="slide-content">
                             <h2>Nos Plats Gourmets</h2>
-                            <p>Une sélection raffinée pour tous les goûts</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/476118783_122211107660034185_3003209286039506367_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GRe9mdQi5qAQ7kNvwGsZv8N&_nc_oc=Adm_47zyFWbD_KLg1ckN-gTVoMQ50m9Ty177yFt-L11-Kxf2aSQypECcuCpxEp7m66s&_nc_zt=23&_nc_ht=scontent.ftun10-1.fna&_nc_gid=WLUYksCmPzY0TUxdFz8ueg&oh=00_AfP7Z3F6LL9wdcqynzwZRL4rumwQKNqQazMzN_qmaAgeow&oe=68489679'); background-size: cover; background-position: center;">
-                        <div class="slide-content">
-                            <h2>Desserts Maison</h2>
-                            <p>La touche sucrée faite avec amour</p>
-                        </div>
-                    </div>
-                </div>
+                <p>Une sélection raffinée pour tous les goûts</p>
             </div>
         </div>
-    </section>
 
-    <!-- Menu Section -->
-    <main id="menu" class="menu-section">
-        <div class="container">
-            <div class="menu-category">
+        <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://scontent.ftun10-1.fna.fbcdn.net/v/t39.30808-6/476118783_122211107660034185_3003209286039506367_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=GRe9mdQi5qAQ7kNvwGsZv8N&_nc_oc=Adm_47zyFWbD_KLg1ckN-gTVoMQ50m9Ty177yFt-L11-Kxf2aSQypECcuCpxEp7m66s&_nc_zt=23&_nc_ht=scontent.ftun10-1.fna&_nc_gid=WLUYksCmPzY0TUxdFz8ueg&oh=00_AfP7Z3F6LL9wdcqynzwZRL4rumwQKNqQazMzN_qmaAgeow&oe=68489679'); background-size: cover; background-position: center;">
+            <div class="slide-content">
+                <h2>Desserts Maison</h2>
+                <p>La touche sucrée faite avec amour</p>
+            </div>
+        </div>
+            </div>
+        </div>
+
+        <div class="menu-container">
+            <div class="menu-section">
                 <h3>🍕 Pizzas</h3>
                 <div class="menu-grid" id="pizzaMenu"></div>
             </div>
 
-            <div class="menu-category">
+            <div class="menu-section">
                 <h3>🥪 Sandwichs & Plats</h3>
                 <div class="menu-grid" id="platsMenu"></div>
             </div>
 
-            <div class="menu-category">
+            <div class="menu-section">
                 <h3>☕ Boissons</h3>
                 <div class="menu-grid" id="boissonsMenu"></div>
             </div>
 
-            <div class="menu-category">
+            <div class="menu-section">
                 <h3>🍰 Desserts</h3>
                 <div class="menu-grid" id="dessertsMenu"></div>
             </div>
         </div>
     </main>
 
-    <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-content">
             <button class="close-cart" onclick="toggleCart()">×</button>
@@ -915,59 +864,23 @@
         </div>
     </div>
 
-    <!-- QR Scanner Modal -->
-    <div class="qr-modal" id="qrScannerModal">
-        <div class="qr-content">
-            <button class="close-qr" onclick="closeQRScanner()">×</button>
-            <h2 style="color: #2c3e50; margin-bottom: 20px;">Scanner le QR Code de votre table</h2>
-            <div id="scanner-container">
-                <video id="qr-video"></video>
-                <div id="scanner-frame"></div>
-            </div>
-            <p id="scanner-instructions">Veuillez scanner le QR code situé sur votre table pour identifier votre emplacement.</p>
-        </div>
-    </div>
-
-    <!-- Notification -->
     <div class="notification" id="notification"></div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p>📍 La Chebba, Mahdia, Tunisie</p>
-                <p>📞 +216 12 345 678</p>
-                <p>✉️ contact@residenceharoun.tn</p>
-            </div>
-            <div class="footer-section">
-                <h3>Horaires</h3>
-                <p>Lundi - Vendredi: 8h - 22h</p>
-                <p>Samedi - Dimanche: 9h - 23h</p>
-                <p>Service de chambre: 24h/24</p>
-            </div>
-            <div class="footer-section">
-                <h3>Suivez-nous</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link">📱</a>
-                    <a href="#" class="social-link">📸</a>
-                    <a href="#" class="social-link">🔵</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 Résidence Haroun - Tous droits réservés | Conçu avec ❤️ pour nos clients</p>
-        </div>
-    </footer>
+    <div class="debug-info" id="debugInfo" style="display: none;">
+        <div>Firebase: <span id="firebaseStatus">❌</span></div>
+        <div>Panier: <span id="cartDebug">0</span> articles</div>
+        <div>Table ID: <span id="tableDebug">inconnue</span></div>
+        <button onclick="toggleDebug()" style="margin-top: 5px; padding: 2px 5px;">Toggle Debug</button>
+        <button onclick="showTestOrder()" style="margin-top: 5px; padding: 2px 5px;">Test Commande</button>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
     <script type="module">
         // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBe6juIZqptZs--8vRqSy8Y36jN_b_Vr10",
             authDomain: "moniteur-d7a49.firebaseapp.com",
             projectId: "moniteur-d7a49",
-            storageBucket: "moniteur-d7a49.appspot.com",
+            storageBucket: "moniteur-d7a49.firebasestorage.app",
             messagingSenderId: "127199244043",
             appId: "1:127199244043:web:1d2f53b75b800f3e813c0e",
             measurementId: "G-GT0E69TGPX"
@@ -983,7 +896,7 @@
             const tableId = params.get('table');
             
             // Valider l'ID de table (doit être un nombre entre 1 et 40)
-            if (tableId && !isNaN(tableId)) {
+            if (tableId && !isNaN(tableId) ){
                 const tableNum = parseInt(tableId);
                 if (tableNum >= 1 && tableNum <= 40) {
                     return tableNum;
@@ -995,19 +908,21 @@
         
         // Variable pour stocker l'ID de table
         let tableId = getTableIdFromURL();
-        let videoStream = null; // Pour la caméra
         
         // Afficher l'ID de table
         function displayTableId() {
             const tableIdDisplay = document.getElementById('tableIdDisplay');
             const tableDisplay = document.getElementById('tableDisplay');
+            const tableDebug = document.getElementById('tableDebug');
             
             if (tableId) {
                 tableIdDisplay.textContent = tableId;
                 tableDisplay.textContent = tableId;
+                tableDebug.textContent = tableId;
             } else {
                 tableIdDisplay.textContent = '?';
                 tableDisplay.textContent = 'non spécifiée';
+                tableDebug.textContent = 'inconnue';
             }
         }
         
@@ -1252,8 +1167,11 @@
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             notification.innerHTML = message.replace(/\n/g, '<br>');
-            notification.style.background = type === 'error' ? '#e74c3c' : '#27ae60';
+            notification.style.background = type === 'error' ? '#ff4757' : '#4caf50';
             notification.style.color = 'white';
+            notification.style.padding = '15px 20px';
+            notification.style.borderRadius = '10px';
+            notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
             notification.classList.add('show');
             
             setTimeout(() => {
@@ -1271,7 +1189,7 @@
                 }
 
                 const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js');
-                const { getFirestore } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+                const { getFirestore, collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
                 
                 app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
@@ -1281,85 +1199,6 @@
             } catch (error) {
                 console.error("❌ Erreur Firebase:", error);
                 firebaseReady = false;
-            }
-        }
-
-        // Fonctions pour le scanner QR
-        window.openQRScanner = function() {
-            const modal = document.getElementById('qrScannerModal');
-            modal.style.display = 'flex';
-            
-            const video = document.getElementById('qr-video');
-            
-            // Démarrer la caméra
-            navigator.mediaDevices.getUserMedia({ 
-                video: { 
-                    facingMode: "environment" // Utiliser la caméra arrière
-                } 
-            })
-            .then(function(stream) {
-                videoStream = stream;
-                video.srcObject = stream;
-                video.play();
-                requestAnimationFrame(scanQR);
-            })
-            .catch(function(err) {
-                console.error("Erreur caméra: ", err);
-                showNotification("Impossible d'accéder à la caméra. Veuillez vérifier les permissions.", 'error');
-                closeQRScanner();
-            });
-        };
-
-        window.closeQRScanner = function() {
-            const modal = document.getElementById('qrScannerModal');
-            modal.style.display = 'none';
-            
-            // Arrêter la caméra
-            if (videoStream) {
-                videoStream.getTracks().forEach(track => track.stop());
-                videoStream = null;
-            }
-        };
-
-        function scanQR() {
-            const video = document.getElementById('qr-video');
-            const canvasElement = document.createElement('canvas');
-            const canvas = canvasElement.getContext('2d');
-            
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                canvasElement.height = video.videoHeight;
-                canvasElement.width = video.videoWidth;
-                canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-                const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-                const code = jsQR(imageData.data, imageData.width, imageData.height, {
-                    inversionAttempts: "dontInvert",
-                });
-                
-                if (code) {
-                    // Nous attendons un QR code avec l'ID de table dans l'URL ?table=XX
-                    const urlParams = new URLSearchParams(code.data);
-                    const tableIdFromQR = urlParams.get('table');
-                    
-                    if (tableIdFromQR) {
-                        // Validation de l'ID de table
-                        const tableNum = parseInt(tableIdFromQR);
-                        if (!isNaN(tableNum) {
-                            tableId = tableNum;
-                            displayTableId(); // Mettre à jour l'affichage
-                            closeQRScanner();
-                            showNotification(`Table ${tableId} scannée avec succès!`, 'success');
-                            return;
-                        }
-                    }
-                    
-                    // Si le QR code ne contient pas l'ID de table
-                    document.getElementById('scanner-instructions').textContent = "QR code non valide. Veuillez scanner le QR code de la table.";
-                    document.getElementById('scanner-instructions').style.color = "#e74c3c";
-                }
-            }
-            
-            if (document.getElementById('qrScannerModal').style.display === 'flex') {
-                requestAnimationFrame(scanQR);
             }
         }
 
@@ -1388,16 +1227,37 @@
             }
         });
 
+        // Debug functions
+        window.toggleDebug = function() {
+            const debug = document.getElementById('debugInfo');
+            debug.style.display = debug.style.display === 'none' ? 'block' : 'none';
+        };
+
+        window.showTestOrder = function() {
+            console.log("🧪 Test de commande...");
+            if (cart.length === 0) {
+                addToCart('Pizza Test', 10000);
+            }
+            processOrder();
+        };
+
+        function updateDebugInfo() {
+            const firebaseStatus = document.getElementById('firebaseStatus');
+            const cartDebug = document.getElementById('cartDebug');
+            
+            if (firebaseStatus) {
+                firebaseStatus.textContent = firebaseReady ? '✅' : '❌';
+            }
+            if (cartDebug) {
+                cartDebug.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+        }
+
         // Fermer le modal en cliquant à l'extérieur
         window.onclick = function(event) {
-            const cartModal = document.getElementById('cartModal');
-            if (event.target === cartModal) {
-                cartModal.style.display = 'none';
-            }
-            
-            const qrModal = document.getElementById('qrScannerModal');
-            if (event.target === qrModal) {
-                closeQRScanner();
+            const modal = document.getElementById('cartModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
             }
         };
 
@@ -1405,7 +1265,7 @@
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'd') {
                 e.preventDefault();
-                // toggleDebug();
+                toggleDebug();
             }
         });
     </script>
