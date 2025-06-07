@@ -956,63 +956,197 @@
     </div>
     <!-- Notification -->
     <div class="notification" id="notification"></div>
-<!-- Section Commande en Ligne -->
 <section id="commande-en-ligne" style="background: #f0f0f0; padding: 4rem 2rem;">
   <div class="container" style="max-width: 800px; margin: 0 auto;">
     <h2 class="section-title" style="margin-bottom: 2rem;">Commande en Ligne</h2>
 
-    <form id="onlineOrderForm" action="https://formsubmit.co/dawserbelgacem122@gmail.com" method="POST" 
-          style="display: flex; flex-direction: column; gap: 1.5rem; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-      
+    <form id="onlineOrderForm" action="https://formsubmit.co/dawserbelgacem122@gmail.com" method="POST"
+      style="display: flex; flex-direction: column; gap: 1.5rem; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+
       <!-- Champs cachés -->
       <input type="hidden" name="_subject" value="Nouvelle commande en ligne">
       <input type="hidden" name="_captcha" value="false">
 
       <!-- Nom complet -->
       <label for="nomComplete" style="font-weight: 600;">Nom Complet :</label>
-      <input type="text" id="nomComplete" name="nom" placeholder="Nom complet" required 
-             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="text" id="nomComplete" name="nom" placeholder="Nom complet" required
+        style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
 
       <!-- Email -->
       <label for="email" style="font-weight: 600;">Adresse Email :</label>
-      <input type="email" id="email" name="email" placeholder="Adresse email" required 
-             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="email" id="email" name="email" placeholder="Adresse email" required
+        style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
 
       <!-- Adresse -->
       <label for="adresse" style="font-weight: 600;">Adresse :</label>
-      <input type="text" id="adresse" name="adresse" placeholder="Votre adresse" required 
-             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="text" id="adresse" name="adresse" placeholder="Votre adresse" required
+        style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
 
       <!-- Téléphone -->
       <label for="telephone" style="font-weight: 600;">Téléphone :</label>
-      <input type="tel" id="telephone" name="telephone" placeholder="Téléphone" required 
-             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+      <input type="tel" id="telephone" name="telephone" placeholder="Téléphone" required
+        style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
 
-      <!-- Choix menu -->
-      <label for="menuType" style="font-weight: 600;">Choisissez le type de menu :</label>
-      <select id="menuType" name="menuType" required 
-              style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="">-- Sélectionner un menu --</option>
-        <option value="pizza">Pizza</option>
-        <option value="sandwich">Sandwich</option>
-      </select>
+      <!-- Choix du type de menu -->
+      <fieldset style="border: 1px solid #ccc; padding: 1rem; border-radius: 10px;">
+        <legend style="font-weight: 600;">Choisissez le(s) type(s) de menu :</legend>
 
-      <!-- Choix variante -->
-      <label for="typeVariante" style="font-weight: 600;">Sélectionnez le type/variante :</label>
-      <select id="typeVariante" name="typeVariante" required
-              style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
-        <option value="">-- Sélectionner le type --</option>
-        <!-- Options dynamiques -->
-      </select>
+        <label><input type="checkbox" name="menuType" value="pizza" class="menu-type-checkbox"> Pizza</label><br>
+        <label><input type="checkbox" name="menuType" value="sandwich" class="menu-type-checkbox"> Sandwich</label>
+      </fieldset>
+
+      <!-- Conteneur variantes -->
+      <div id="variantesContainer" style="margin-top: 1rem;"></div>
 
       <!-- Bouton envoyer -->
-      <button type="submit" 
-              style="background: #27ae60; color: white; padding: 1rem; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer; transition: background 0.3s;">
+      <button type="submit"
+        style="background: #27ae60; color: white; padding: 1rem; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer; transition: background 0.3s;">
         Passer la Commande
       </button>
     </form>
   </div>
 </section>
+
+<script>
+  // Variantes par type
+  const typesOptions = {
+    pizza: [
+      "Margherita",
+      "Thon",
+      "4 Fromages",
+      "Chawarma",
+      "Escalope",
+      "Thon-fromage",
+      "Fruit de mer",
+    ],
+    sandwich: [
+      "Mlaoui Thon",
+      "Mlaoui Chawarma",
+      "Tabouna Thon",
+      "Tabouna Chawarma",
+      "Makloub Thon",
+      "Calzone Chawarma",
+      "Tacos Thon",
+      "Baguette Farcie",
+      "Plat Escalope grillé",
+      "Plat Cordon bleu",
+      "Plat Dorade"
+    ]
+  };
+
+  const variantesContainer = document.getElementById('variantesContainer');
+  const menuCheckboxes = document.querySelectorAll('.menu-type-checkbox');
+
+  // Création des variantes avec checkbox + input quantité
+  function createVariantesCheckboxes(type) {
+    const variantes = typesOptions[type];
+    const container = document.createElement('fieldset');
+    container.style.border = "1px solid #ccc";
+    container.style.padding = "1rem";
+    container.style.marginBottom = "1rem";
+    container.style.borderRadius = "10px";
+
+    const legend = document.createElement('legend');
+    legend.textContent = `Variantes pour ${type.charAt(0).toUpperCase() + type.slice(1)} :`;
+    legend.style.fontWeight = "600";
+    container.appendChild(legend);
+
+    variantes.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.style.display = "flex";
+      div.style.alignItems = "center";
+      div.style.gap = "0.5rem";
+      div.style.marginBottom = "0.25rem";
+
+      // Checkbox variante
+      const checkbox = document.createElement('input');
+      checkbox.type = "checkbox";
+      checkbox.name = `typeVariante_${type}[]`;
+      checkbox.value = item;
+      checkbox.id = `${type}_${index}`;
+
+      // Label avec numéro et nom variante
+      const label = document.createElement('label');
+      label.htmlFor = checkbox.id;
+      label.textContent = `${index + 1}. ${item}`;
+
+      // Input nombre (quantité)
+      const qtyInput = document.createElement('input');
+      qtyInput.type = "number";
+      qtyInput.name = `qty_${type}[]`;
+      qtyInput.value = 1;
+      qtyInput.min = 1;
+      qtyInput.style.width = "60px";
+      qtyInput.disabled = true; // désactivé par défaut
+
+      // Activer/désactiver quantité selon checkbox
+      checkbox.addEventListener('change', () => {
+        qtyInput.disabled = !checkbox.checked;
+        if (!checkbox.checked) qtyInput.value = 1; // reset à 1 si décoché
+      });
+
+      div.appendChild(checkbox);
+      div.appendChild(label);
+      div.appendChild(qtyInput);
+
+      container.appendChild(div);
+    });
+
+    return container;
+  }
+
+  // Mettre à jour affichage variantes selon sélection
+  function updateVariantes() {
+    variantesContainer.innerHTML = ''; // reset
+
+    menuCheckboxes.forEach(cb => {
+      if (cb.checked) {
+        const variantesFieldset = createVariantesCheckboxes(cb.value);
+        variantesContainer.appendChild(variantesFieldset);
+      }
+    });
+  }
+
+  // Écoute sur checkbox menu
+  menuCheckboxes.forEach(cb => {
+    cb.addEventListener('change', updateVariantes);
+  });
+
+  // Validation avant soumission
+  document.getElementById('onlineOrderForm').addEventListener('submit', function(e) {
+    const checkedMenus = [...menuCheckboxes].filter(cb => cb.checked);
+    if (checkedMenus.length === 0) {
+      alert("Veuillez sélectionner au moins un type de menu.");
+      e.preventDefault();
+      return;
+    }
+
+    let valid = true;
+
+    checkedMenus.forEach(menu => {
+      const variantesChecked = this.querySelectorAll(`input[name="typeVariante_${menu.value}[]"]:checked`);
+      if (variantesChecked.length === 0) {
+        alert(`Veuillez sélectionner au moins une variante pour le menu ${menu.value}.`);
+        valid = false;
+      } else {
+        // Vérifier quantité > 0 pour chaque sélectionnée
+        variantesChecked.forEach(cb => {
+          // Trouver l'input quantité correspondant (même index dans le fieldset)
+          // Astuce: on va chercher dans le même parent le champ qty qui correspond
+          const parentDiv = cb.parentNode;
+          const qtyInput = parentDiv.querySelector(`input[type="number"]`);
+          if (!qtyInput || qtyInput.value < 1) {
+            alert(`Veuillez entrer une quantité valide pour la variante "${cb.value}".`);
+            valid = false;
+          }
+        });
+      }
+    });
+
+    if (!valid) e.preventDefault();
+  });
+
+</script>
 
     
     <!-- Footer -->
@@ -1499,45 +1633,7 @@
             }
         });
 
-        const typesOptions = {
-  pizza: [
-    "Margherita",
-    "Thon",
-    "4 Fromages",
-    "Chawarma",
-    "Escalope",
-    "Thon-fromage",
-    "Fruit de mer",
-  ],
-  sandwich: [
-    "Mlaoui Thon",
-    "Mlaoui Chawarma",
-    "Tabouna Thon",
-    "Tabouna Chawarma",
-    "Makloub Thon",
-    "Calzone Chawarma",
-    "Tacos Thon",
-    "Baguette Farcie",
-    "Plat Escalope grillé",
-    "Plat Cordon bleu",
-    "Plat Dorade"
-  ]
-};
-
-document.getElementById('menuType').addEventListener('change', function() {
-  const selected = this.value;
-  const optionsContainer = document.getElementById('typeVariante');
-  optionsContainer.innerHTML = '<option value="">-- Sélectionner le type --</option>';
-
-  if (typesOptions[selected]) {
-    typesOptions[selected].forEach(function(item) {
-      const option = document.createElement('option');
-      option.value = item;
-      option.textContent = item;
-      optionsContainer.appendChild(option);
-    });
-  }
-});
+      
 
     </script>
     
