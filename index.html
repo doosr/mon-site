@@ -954,10 +954,67 @@
             <p id="scanner-instructions">Veuillez scanner le QR code situé sur votre table pour identifier votre emplacement.</p>
         </div>
     </div>
-
     <!-- Notification -->
     <div class="notification" id="notification"></div>
+<!-- Section Commande en Ligne -->
+<section id="commande-en-ligne" style="background: #f0f0f0; padding: 4rem 2rem;">
+  <div class="container" style="max-width: 800px; margin: 0 auto;">
+    <h2 class="section-title" style="margin-bottom: 2rem;">Commande en Ligne</h2>
 
+    <form id="onlineOrderForm" action="https://formsubmit.co/dawserbelgacem122@gmail.com" method="POST" 
+          style="display: flex; flex-direction: column; gap: 1.5rem; background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+      
+      <!-- Champs cachés -->
+      <input type="hidden" name="_subject" value="Nouvelle commande en ligne">
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Nom complet -->
+      <label for="nomComplete" style="font-weight: 600;">Nom Complet :</label>
+      <input type="text" id="nomComplete" name="nom" placeholder="Nom complet" required 
+             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <!-- Email -->
+      <label for="email" style="font-weight: 600;">Adresse Email :</label>
+      <input type="email" id="email" name="email" placeholder="Adresse email" required 
+             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <!-- Adresse -->
+      <label for="adresse" style="font-weight: 600;">Adresse :</label>
+      <input type="text" id="adresse" name="adresse" placeholder="Votre adresse" required 
+             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <!-- Téléphone -->
+      <label for="telephone" style="font-weight: 600;">Téléphone :</label>
+      <input type="tel" id="telephone" name="telephone" placeholder="Téléphone" required 
+             style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+
+      <!-- Choix menu -->
+      <label for="menuType" style="font-weight: 600;">Choisissez le type de menu :</label>
+      <select id="menuType" name="menuType" required 
+              style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="">-- Sélectionner un menu --</option>
+        <option value="pizza">Pizza</option>
+        <option value="sandwich">Sandwich</option>
+      </select>
+
+      <!-- Choix variante -->
+      <label for="typeVariante" style="font-weight: 600;">Sélectionnez le type/variante :</label>
+      <select id="typeVariante" name="typeVariante" required
+              style="padding: 0.75rem; border-radius: 8px; border: 1px solid #ccc;">
+        <option value="">-- Sélectionner le type --</option>
+        <!-- Options dynamiques -->
+      </select>
+
+      <!-- Bouton envoyer -->
+      <button type="submit" 
+              style="background: #27ae60; color: white; padding: 1rem; border: none; border-radius: 10px; font-size: 1.2rem; cursor: pointer; transition: background 0.3s;">
+        Passer la Commande
+      </button>
+    </form>
+  </div>
+</section>
+
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -1441,6 +1498,48 @@
                 // toggleDebug();
             }
         });
+
+        const typesOptions = {
+  pizza: [
+    "Margherita",
+    "Thon",
+    "4 Fromages",
+    "Chawarma",
+    "Escalope",
+    "Thon-fromage",
+    "Fruit de mer",
+  ],
+  sandwich: [
+    "Mlaoui Thon",
+    "Mlaoui Chawarma",
+    "Tabouna Thon",
+    "Tabouna Chawarma",
+    "Makloub Thon",
+    "Calzone Chawarma",
+    "Tacos Thon",
+    "Baguette Farcie",
+    "Plat Escalope grillé",
+    "Plat Cordon bleu",
+    "Plat Dorade"
+  ]
+};
+
+document.getElementById('menuType').addEventListener('change', function() {
+  const selected = this.value;
+  const optionsContainer = document.getElementById('typeVariante');
+  optionsContainer.innerHTML = '<option value="">-- Sélectionner le type --</option>';
+
+  if (typesOptions[selected]) {
+    typesOptions[selected].forEach(function(item) {
+      const option = document.createElement('option');
+      option.value = item;
+      option.textContent = item;
+      optionsContainer.appendChild(option);
+    });
+  }
+});
+
     </script>
+    
 </body>
 </html>
