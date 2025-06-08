@@ -782,6 +782,171 @@
             .social-links {
                 justify-content: center;
             }
+
+
+             /* Nouveaux styles pour la section commentaires */
+        .comments-section {
+            background: #f9f9f9;
+            padding: 4rem 0;
+        }
+        
+        .comments-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .comment-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .comment-form h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .star {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+        
+        .star.active {
+            color: #ffc107;
+        }
+        
+        .submit-comment {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .submit-comment:hover {
+            background: linear-gradient(45deg, #2980b9, #2573a7);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .comments-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .comment-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border-left: 4px solid #3498db;
+        }
+        
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .comment-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .comment-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .comment-rating {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comment-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Section vidéo */
+        .video-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            margin-top: 2rem;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
         }
     </style>
 </head>
@@ -814,7 +979,6 @@
         </div>
     </section>
 
-    <!-- Description Section -->
    <!-- Description Section -->
 <section class="description-section">
     <div class="container">
@@ -833,12 +997,31 @@
                 </p>
             </div>
             <div class="description-image">
-                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Familia Parc">
+<img src="https://scontent.ftun10-2.fna.fbcdn.net/v/t39.30808-6/474457756_122208624002034185_7500627759909160678_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=JQVNcZh0cF8Q7kNvwEj4tEJ&_nc_oc=AdlneZxDntiUFlevr9TGqGoU7z6crT1-QZAt-4decZovcMy0CLUW0a7_jyggNv38dag&_nc_zt=23&_nc_ht=scontent.ftun10-2.fna&_nc_gid=w4h_d9g-ar-k0k9Qcod7Cg&oh=00_AfMWHgQOMapZZYrvrm716LBBDPKGonufi8nq8OGMwnZDmw&oe=684BEA2B"
+     alt="Familia Parc" >
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section vidéo Facebook -->
+   <section class="video-section">
+    <div class="container">
+        <h2 class="section-title" style="color: white;">Découvrez notre établissement en vidéo</h2>
+        <div class="video-container">
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                Regardez cette vidéo pour voir l'ambiance de notre résidence et les services que nous offrons
+            </p>
+            <div class="video-wrapper" style="max-width: 300px; margin: 0 auto;">
+                <video controls style="width: 100%; height: auto;">
+                    <source src="video/2.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
             </div>
         </div>
     </div>
 </section>
 
+ 
     <!-- Features Section -->
     <section class="features-section">
         <div class="container">
@@ -1006,7 +1189,45 @@
     </form>
   </div>
 </section>
-
+   <!-- Section commentaires -->
+    <section class="comments-section">
+        <div class="comments-container">
+            <h2 class="section-title">Vos avis et commentaires</h2>
+            
+            <div class="comment-form">
+                <h3>Partagez votre expérience</h3>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <label for="commentName">Nom :</label>
+                        <input type="text" id="commentName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="commentRating">Note :</label>
+                        <select id="commentRating" required>
+                            <option value="">Sélectionnez une note</option>
+                            <option value="5">★★★★★ Excellent</option>
+                            <option value="4">★★★★☆ Très bien</option>
+                            <option value="3">★★★☆☆ Bien</option>
+                            <option value="2">★★☆☆☆ Moyen</option>
+                            <option value="1">★☆☆☆☆ Décevant</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="commentText">Commentaire :</label>
+                        <textarea id="commentText" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-comment">Publier votre avis</button>
+                </form>
+            </div>
+            
+            <div class="comments-list" id="commentsList">
+                <!-- Les commentaires seront chargés dynamiquement ici -->
+            </div>
+        </div>
+    </section>
 <script>
   // Variantes par type
   const typesOptions = {
@@ -1185,7 +1406,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
-    <script type="module">
+  <script type="module">
         // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBe6juIZqptZs--8vRqSy8Y36jN_b_Vr10",
@@ -1290,6 +1511,8 @@
         // Initialisation du carrousel
         function initCarousel() {
             const carousel = document.getElementById('carousel');
+            if (!carousel) return;
+            
             const slides = carousel.children;
             
             setInterval(() => {
@@ -1317,10 +1540,10 @@
                 `;
             }
 
-            pizzaContainer.innerHTML = menuData.pizzas.map(createMenuItem).join('');
-            platsContainer.innerHTML = menuData.plats.map(createMenuItem).join('');
-            boissonsContainer.innerHTML = menuData.boissons.map(createMenuItem).join('');
-            dessertsContainer.innerHTML = menuData.desserts.map(createMenuItem).join('');
+            if (pizzaContainer) pizzaContainer.innerHTML = menuData.pizzas.map(createMenuItem).join('');
+            if (platsContainer) platsContainer.innerHTML = menuData.plats.map(createMenuItem).join('');
+            if (boissonsContainer) boissonsContainer.innerHTML = menuData.boissons.map(createMenuItem).join('');
+            if (dessertsContainer) dessertsContainer.innerHTML = menuData.desserts.map(createMenuItem).join('');
         }
 
         // Gestion du panier
@@ -1359,6 +1582,8 @@
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
 
+            if (!cartCount || !cartItems || !cartTotal) return;
+
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -1383,7 +1608,9 @@
 
         window.toggleCart = function() {
             const modal = document.getElementById('cartModal');
-            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            if (modal) {
+                modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            }
         };
 
         window.processOrder = async function() {
@@ -1402,87 +1629,163 @@
 
             // Afficher un indicateur de chargement
             const checkoutBtn = document.querySelector('.checkout-btn');
-            const originalText = checkoutBtn.textContent;
-            checkoutBtn.textContent = 'Traitement...';
-            checkoutBtn.disabled = true;
+            if (checkoutBtn) {
+                const originalText = checkoutBtn.textContent;
+                checkoutBtn.textContent = 'Traitement...';
+                checkoutBtn.disabled = true;
 
-            try {
-                const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                
-                const orderData = {
-                    table: tableId, // Ajout de l'ID de table
-                    items: cart.map(item => ({
-                        name: item.name,
-                        price: item.price,
-                        quantity: item.quantity,
-                        subtotal: item.price * item.quantity
-                    })),
-                    total: totalPrice,
-                    totalFormatted: `${(totalPrice / 1000).toFixed(3)} DT`,
-                    timestamp: new Date().toISOString(),
-                    status: 'en_attente',
-                    orderNumber: 'CMD-' + Date.now()
-                };
+                try {
+                    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    
+                    const orderData = {
+                        table: tableId,
+                        items: cart.map(item => ({
+                            name: item.name,
+                            price: item.price,
+                            quantity: item.quantity,
+                            subtotal: item.price * item.quantity
+                        })),
+                        total: totalPrice,
+                        totalFormatted: `${(totalPrice / 1000).toFixed(3)} DT`,
+                        timestamp: new Date().toISOString(),
+                        status: 'en_attente',
+                        orderNumber: 'CMD-' + Date.now()
+                    };
 
-                console.log("📦 Données de commande:", orderData);
+                    console.log("📦 Données de commande:", orderData);
 
-                if (firebaseReady && db) {
-                    console.log("🔥 Sauvegarde Firebase en cours...");
+                    if (firebaseReady && db) {
+                        console.log("🔥 Sauvegarde Firebase en cours...");
+                        
+                        const { collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+                        
+                        const docRef = await addDoc(collection(db, 'orders'), {
+                            ...orderData,
+                            timestamp: serverTimestamp()
+                        });
+                        
+                        console.log("✅ Commande sauvegardée avec ID:", docRef.id);
+                        showNotification(`✅ Commande confirmée pour la table ${tableId}! Numéro: ${orderData.orderNumber}`, 'success');
+                        
+                    } else {
+                        console.log("🎭 Mode DÉMO - Simulation de commande");
+                        
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                        
+                        console.log("💾 Commande sauvegardée localement:", orderData);
+                        showNotification(`✅ Commande confirmée pour la table ${tableId}! (Mode démo)\nNuméro: ${orderData.orderNumber}`, 'success');
+                    }
                     
-                    // Import dynamique des fonctions Firebase
-                    const { collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+                    // Vider le panier et fermer le modal
+                    cart = [];
+                    updateCartDisplay();
+                    toggleCart();
                     
-                    const docRef = await addDoc(collection(db, 'orders'), {
-                        ...orderData,
-                        timestamp: serverTimestamp()
-                    });
+                    console.log("🎉 Commande traitée avec succès!");
                     
-                    console.log("✅ Commande sauvegardée avec ID:", docRef.id);
-                    showNotification(`✅ Commande confirmée pour la table ${tableId}! Numéro: ${orderData.orderNumber}`, 'success');
-                    
-                } else {
-                    console.log("🎭 Mode DÉMO - Simulation de commande");
-                    
-                    // Simulation d'une requête réseau
-                    await new Promise(resolve => setTimeout(resolve, 1500));
-                    
-                    // Sauvegarder localement pour la démo
-                    const existingOrders = JSON.parse(localStorage.getItem('demo_orders') || '[]');
-                    existingOrders.push(orderData);
-                    localStorage.setItem('demo_orders', JSON.stringify(existingOrders));
-                    
-                    console.log("💾 Commande sauvegardée localement:", orderData);
-                    showNotification(`✅ Commande confirmée pour la table ${tableId}! (Mode démo)\nNuméro: ${orderData.orderNumber}`, 'success');
+                } catch (error) {
+                    console.error('❌ Erreur lors de la commande:', error);
+                    showNotification(`❌ Erreur: ${error.message}. Veuillez réessayer.`, 'error');
+                } finally {
+                    checkoutBtn.textContent = originalText;
+                    checkoutBtn.disabled = false;
                 }
-                
-                // Vider le panier et fermer le modal
-                cart = [];
-                updateCartDisplay();
-                toggleCart();
-                
-                // Log pour debug
-                console.log("🎉 Commande traitée avec succès!");
-                
-            } catch (error) {
-                console.error('❌ Erreur lors de la commande:', error);
-                showNotification(`❌ Erreur: ${error.message}. Veuillez réessayer.`, 'error');
-            } finally {
-                // Restaurer le bouton
-                checkoutBtn.textContent = originalText;
-                checkoutBtn.disabled = false;
             }
         };
 
+        // Fonctions pour les commentaires
+        function renderStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                stars += i <= rating ? '★' : '☆';
+            }
+            return stars;
+        }
+        
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('fr-FR', options);
+        }
+        
+        async function loadComments() {
+            const commentsList = document.getElementById('commentsList');
+            if (!commentsList) return;
+            
+            commentsList.innerHTML = '<p style="text-align: center; padding: 2rem;">Chargement des commentaires...</p>';
+            
+            try {
+                if (firebaseReady && db) {
+                    const { collection, getDocs, orderBy, query } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+                    
+                    const commentsRef = collection(db, 'comments');
+                    const q = query(commentsRef, orderBy('timestamp', 'desc'));
+                    const querySnapshot = await getDocs(q);
+                    
+                    if (querySnapshot.empty) {
+                        commentsList.innerHTML = '<p style="text-align: center; padding: 2rem;">Aucun commentaire pour le moment. Soyez le premier à donner votre avis !</p>';
+                        return;
+                    }
+                    
+                    let commentsHTML = '';
+                    querySnapshot.forEach(doc => {
+                        const comment = doc.data();
+                        commentsHTML += `
+                            <div class="comment-card">
+                                <div class="comment-header">
+                                    <div class="comment-author">${comment.name}</div>
+                                    <div class="comment-date">${formatDate(comment.timestamp.toDate())}</div>
+                                </div>
+                                <div class="comment-rating">${renderStars(comment.rating)}</div>
+                                <div class="comment-text">${comment.text}</div>
+                            </div>
+                        `;
+                    });
+                    
+                    commentsList.innerHTML = commentsHTML;
+                } else {
+                    commentsList.innerHTML = '<p style="text-align: center; padding: 2rem;">Mode démo - Les commentaires ne sont pas disponibles.</p>';
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des commentaires:', error);
+                commentsList.innerHTML = '<p style="text-align: center; padding: 2rem; color: #e74c3c;">Impossible de charger les commentaires. Veuillez réessayer plus tard.</p>';
+            }
+        }
+        
+        async function saveComment(name, rating, text) {
+            try {
+                if (firebaseReady && db) {
+                    const { collection, addDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js');
+                    
+                    await addDoc(collection(db, 'comments'), {
+                        name,
+                        rating: parseInt(rating),
+                        text,
+                        timestamp: serverTimestamp()
+                    });
+                    
+                    return true;
+                } else {
+                    // Mode démo
+                    return true;
+                }
+            } catch (error) {
+                console.error('Erreur lors de la sauvegarde du commentaire:', error);
+                return false;
+            }
+        }
+
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
-            notification.innerHTML = message.replace(/\n/g, '<br>');
-            notification.style.background = type === 'error' ? '#e74c3c' : '#27ae60';
-            notification.style.color = 'white';
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 5000);
+            if (notification) {
+                notification.innerHTML = message.replace(/\n/g, '<br>');
+                notification.style.background = type === 'error' ? '#e74c3c' : '#27ae60';
+                notification.style.color = 'white';
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            }
         }
 
         // Initialisation Firebase
@@ -1502,6 +1805,9 @@
                 firebaseReady = true;
                 console.log("🔥 Firebase initialisé avec succès!");
                 
+                // Charger les commentaires après l'initialisation
+                loadComments();
+                
             } catch (error) {
                 console.error("❌ Erreur Firebase:", error);
                 firebaseReady = false;
@@ -1511,14 +1817,16 @@
         // Fonctions pour le scanner QR
         window.openQRScanner = function() {
             const modal = document.getElementById('qrScannerModal');
+            if (!modal) return;
+            
             modal.style.display = 'flex';
             
             const video = document.getElementById('qr-video');
+            if (!video) return;
             
-            // Démarrer la caméra
             navigator.mediaDevices.getUserMedia({ 
                 video: { 
-                    facingMode: "environment" // Utiliser la caméra arrière
+                    facingMode: "environment"
                 } 
             })
             .then(function(stream) {
@@ -1536,9 +1844,10 @@
 
         window.closeQRScanner = function() {
             const modal = document.getElementById('qrScannerModal');
-            modal.style.display = 'none';
+            if (modal) {
+                modal.style.display = 'none';
+            }
             
-            // Arrêter la caméra
             if (videoStream) {
                 videoStream.getTracks().forEach(track => track.stop());
                 videoStream = null;
@@ -1547,6 +1856,8 @@
 
         function scanQR() {
             const video = document.getElementById('qr-video');
+            if (!video) return;
+            
             const canvasElement = document.createElement('canvas');
             const canvas = canvasElement.getContext('2d');
             
@@ -1555,36 +1866,84 @@
                 canvasElement.width = video.videoWidth;
                 canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
                 const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-                const code = jsQR(imageData.data, imageData.width, imageData.height, {
-                    inversionAttempts: "dontInvert",
-                });
                 
-                if (code) {
-                    // Nous attendons un QR code avec l'ID de table dans l'URL ?table=XX
-                    const urlParams = new URLSearchParams(code.data);
-                    const tableIdFromQR = urlParams.get('table');
+                // Note: jsQR doit être inclus séparément
+                if (typeof jsQR !== 'undefined') {
+                    const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                        inversionAttempts: "dontInvert",
+                    });
                     
-                    if (tableIdFromQR) {
-                        // Validation de l'ID de table
-                        const tableNum = parseInt(tableIdFromQR);
-                        if (!isNaN(tableNum) ){
-                            tableId = tableNum;
-                            displayTableId(); // Mettre à jour l'affichage
-                            closeQRScanner();
-                            showNotification(`Table ${tableId} scannée avec succès!`, 'success');
-                            return;
+                    if (code) {
+                        const urlParams = new URLSearchParams(code.data);
+                        const tableIdFromQR = urlParams.get('table');
+                        
+                        if (tableIdFromQR) {
+                            const tableNum = parseInt(tableIdFromQR);
+                            if (!isNaN(tableNum)) {
+                                tableId = tableNum;
+                                displayTableId();
+                                closeQRScanner();
+                                showNotification(`Table ${tableId} scannée avec succès!`, 'success');
+                                return;
+                            }
+                        }
+                        
+                        const scannerInstructions = document.getElementById('scanner-instructions');
+                        if (scannerInstructions) {
+                            scannerInstructions.textContent = "QR code non valide. Veuillez scanner le QR code de la table.";
+                            scannerInstructions.style.color = "#e74c3c";
                         }
                     }
-                    
-                    // Si le QR code ne contient pas l'ID de table
-                    document.getElementById('scanner-instructions').textContent = "QR code non valide. Veuillez scanner le QR code de la table.";
-                    document.getElementById('scanner-instructions').style.color = "#e74c3c";
                 }
             }
             
-            if (document.getElementById('qrScannerModal').style.display === 'flex') {
+            const qrModal = document.getElementById('qrScannerModal');
+            if (qrModal && qrModal.style.display === 'flex') {
                 requestAnimationFrame(scanQR);
             }
+        }
+
+        // Gestion du formulaire de commentaire
+        function initCommentForm() {
+            const commentForm = document.getElementById('commentForm');
+            if (!commentForm) return;
+            
+            commentForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('commentName')?.value;
+                const rating = document.getElementById('commentRating')?.value;
+                const text = document.getElementById('commentText')?.value;
+                
+                if (!name || !rating || !text) {
+                    showNotification('Veuillez remplir tous les champs', 'error');
+                    return;
+                }
+                
+                const submitBtn = document.querySelector('.submit-comment');
+                if (submitBtn) {
+                    const originalText = submitBtn.textContent;
+                    submitBtn.textContent = 'Publication en cours...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        const success = await saveComment(name, rating, text);
+                        
+                        if (success) {
+                            showNotification('Votre commentaire a été publié avec succès !', 'success');
+                            commentForm.reset();
+                            loadComments();
+                        } else {
+                            showNotification('Erreur lors de la publication. Veuillez réessayer.', 'error');
+                        }
+                    } catch (error) {
+                        showNotification('Une erreur est survenue. Veuillez réessayer.', 'error');
+                    } finally {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                    }
+                }
+            });
         }
 
         // Initialisation
@@ -1601,6 +1960,7 @@
             initCarousel();
             generateMenu();
             updateCartDisplay();
+            initCommentForm();
             
             console.log("✅ Site initialisé!");
             
@@ -1612,7 +1972,7 @@
             }
         });
 
-        // Fermer le modal en cliquant à l'extérieur
+        // Fermer les modals en cliquant à l'extérieur
         window.onclick = function(event) {
             const cartModal = document.getElementById('cartModal');
             if (event.target === cartModal) {
@@ -1625,15 +1985,17 @@
             }
         };
 
-        // Activer le debug en appuyant sur Ctrl+D
+        // Raccourci clavier pour le debug
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && e.key === 'd') {
                 e.preventDefault();
-                // toggleDebug();
+                console.log("Debug info:", {
+                    tableId,
+                    cart,
+                    firebaseReady
+                });
             }
         });
-
-      
 
     </script>
     
