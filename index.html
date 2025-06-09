@@ -947,9 +947,6 @@
             height: 100%;
             border: none;
         }
-
-
-        
         }
     </style>
 </head>
@@ -1007,83 +1004,22 @@
     </div>
 </section>
 <!-- Section vidéo Facebook -->
-  <section class="video-section">
-        <div class="container">
-            <h2 class="section-title">Découvrez notre établissement en vidéo</h2>
-            
-            <div id="videosContainer">
-                <!-- Vidéo par défaut -->
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-wrapper">
-                            <video controls>
-                                <source src="video/2.mp4" type="video/mp4">
-                                Votre navigateur ne supporte pas la lecture de vidéos.
-                            </video>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">Découverte de notre établissement</div>
-                            <div class="video-author">Par l'équipe</div>
-                            <div class="video-date">Vidéo officielle</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section d'upload -->
-            <div class="upload-section">
-                <h3 style="text-align: center; margin-bottom: 1.5rem;">
-                    📹 Partagez votre expérience en vidéo !
-                </h3>
-                <p style="text-align: center; margin-bottom: 2rem; opacity: 0.9;">
-                    Vous avez visité notre établissement ? Partagez vos moments avec la communauté !
-                </p>
-                
-                <form class="upload-form" id="videoUploadForm">
-                    <div class="form-group">
-                        <label for="videoTitle">Titre de la vidéo *</label>
-                        <input type="text" id="videoTitle" required maxlength="100" 
-                               placeholder="Ex: Mon expérience au restaurant">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="authorName">Votre nom *</label>
-                        <input type="text" id="authorName" required maxlength="50" 
-                               placeholder="Ex: Marie Dupont">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="videoDescription">Description (optionnel)</label>
-                        <textarea id="videoDescription" maxlength="500" 
-                                  placeholder="Décrivez votre expérience..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Vidéo (max 50MB) *</label>
-                        <div class="file-input-wrapper">
-                            <input type="file" id="videoFile" class="file-input" 
-                                   accept="video/*" required>
-                            <label for="videoFile" class="file-input-label" id="fileLabel">
-                                📁 Choisir une vidéo
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="upload-btn" id="uploadBtn">
-                        🚀 Publier ma vidéo
-                    </button>
-                    
-                    <div class="progress-bar" id="progressBar">
-                        <div class="progress-bar-fill" id="progressFill"></div>
-                    </div>
-                </form>
+   <section class="video-section">
+    <div class="container">
+        <h2 class="section-title" style="color: white;">Découvrez notre établissement en vidéo</h2>
+        <div class="video-container">
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                Regardez cette vidéo pour voir l'ambiance de notre résidence et les services que nous offrons
+            </p>
+            <div class="video-wrapper" style="max-width: 300px; margin: 0 auto;">
+                <video controls style="width: 100%; height: auto;">
+                    <source src="video/2.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
             </div>
         </div>
-    </section>
-
-    <!-- Notification -->
-    <div id="notification" class="notification"></div>
-
+    </div>
+</section>
 
  
     <!-- Features Section -->
@@ -1471,7 +1407,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
   <script type="module">
-
         // Configuration Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBe6juIZqptZs--8vRqSy8Y36jN_b_Vr10",
@@ -2061,172 +1996,7 @@
                 });
             }
         });
- let userVideos = JSON.parse(localStorage.getItem('userVideos') || '[]');
 
-        // Fonction pour afficher les notifications
-        function showNotification(message, type = 'success') {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 4000);
-        }
-
-        // Fonction pour formater la date
-        function formatDate(date) {
-            return new Date(date).toLocaleDateString('fr-FR', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
-        }
-
-        // Fonction pour créer une carte vidéo
-        function createVideoCard(video, isDefault = false) {
-            return `
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <video controls>
-                            <source src="${video.url}" type="video/mp4">
-                            Votre navigateur ne supporte pas la lecture de vidéos.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <div class="video-title">${video.title}</div>
-                        <div class="video-author">Par ${video.author}</div>
-                        <div class="video-date">${isDefault ? 'Vidéo officielle' : formatDate(video.date)}</div>
-                        ${video.description ? `<p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">${video.description}</p>` : ''}
-                    </div>
-                </div>
-            `;
-        }
-
-        // Fonction pour afficher toutes les vidéos
-        function displayVideos() {
-            const container = document.getElementById('videosContainer');
-            
-            // Vidéo par défaut
-            const defaultVideo = {
-                title: "Découverte de notre établissement",
-                author: "l'équipe",
-                url: "video/2.mp4"
-            };
-
-            let videosHTML = '<div class="video-grid">';
-            videosHTML += createVideoCard(defaultVideo, true);
-            
-            // Ajouter les vidéos des utilisateurs
-            userVideos.forEach(video => {
-                videosHTML += createVideoCard(video);
-            });
-            
-            videosHTML += '</div>';
-            container.innerHTML = videosHTML;
-        }
-
-        // Gestion du changement de fichier
-        document.getElementById('videoFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const label = document.getElementById('fileLabel');
-            
-            if (file) {
-                // Vérifier la taille (50MB max)
-                if (file.size > 50 * 1024 * 1024) {
-                    showNotification('La vidéo est trop volumineuse (max 50MB)', 'error');
-                    this.value = '';
-                    label.textContent = '📁 Choisir une vidéo';
-                    label.classList.remove('has-file');
-                    return;
-                }
-                
-                label.textContent = `✅ ${file.name}`;
-                label.classList.add('has-file');
-            } else {
-                label.textContent = '📁 Choisir une vidéo';
-                label.classList.remove('has-file');
-            }
-        });
-
-        // Gestion du formulaire d'upload
-        document.getElementById('videoUploadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const title = document.getElementById('videoTitle').value.trim();
-            const author = document.getElementById('authorName').value.trim();
-            const description = document.getElementById('videoDescription').value.trim();
-            const fileInput = document.getElementById('videoFile');
-            const file = fileInput.files[0];
-            
-            if (!title || !author || !file) {
-                showNotification('Veuillez remplir tous les champs obligatoires', 'error');
-                return;
-            }
-            
-            // Simuler l'upload avec une barre de progression
-            const uploadBtn = document.getElementById('uploadBtn');
-            const progressBar = document.getElementById('progressBar');
-            const progressFill = document.getElementById('progressFill');
-            
-            uploadBtn.disabled = true;
-            uploadBtn.textContent = '⏳ Upload en cours...';
-            progressBar.style.display = 'block';
-            
-            // Simuler la progression
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 15;
-                if (progress > 100) progress = 100;
-                
-                progressFill.style.width = progress + '%';
-                
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    
-                    // Créer un URL temporaire pour la vidéo (en production, vous utiliseriez Firebase Storage)
-                    const videoURL = URL.createObjectURL(file);
-                    
-                    // Ajouter la vidéo à la liste
-                    const newVideo = {
-                        id: Date.now(),
-                        title,
-                        author,
-                        description,
-                        url: videoURL,
-                        date: new Date().toISOString(),
-                        fileName: file.name
-                    };
-                    
-                    userVideos.unshift(newVideo); // Ajouter au début
-                    localStorage.setItem('userVideos', JSON.stringify(userVideos));
-                    
-                    // Réinitialiser le formulaire
-                    this.reset();
-                    document.getElementById('fileLabel').textContent = '📁 Choisir une vidéo';
-                    document.getElementById('fileLabel').classList.remove('has-file');
-                    
-                    // Masquer la barre de progression
-                    setTimeout(() => {
-                        progressBar.style.display = 'none';
-                        progressFill.style.width = '0%';
-                        uploadBtn.disabled = false;
-                        uploadBtn.textContent = '🚀 Publier ma vidéo';
-                        
-                        // Afficher les vidéos mises à jour
-                        displayVideos();
-                        
-                        showNotification('🎉 Votre vidéo a été publiée avec succès !', 'success');
-                    }, 500);
-                }
-            }, 100);
-        });
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
-            displayVideos();
-        });
     </script>
     
 </body>
