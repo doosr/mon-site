@@ -1,94 +1,47 @@
-Résidence Haroun - Site Web de Réservation et Commande en Ligne
-Description
-Ce projet est un site web complet pour la Résidence Haroun, située à La Ghedhabna-Chebba en Tunisie. Le site propose :
+# Résidence Haroun - Site Web de Réservation et Commande en Ligne
 
-Un système de commande en ligne pour le restaurant
+## Description
 
-Un scanner de QR code pour identifier les tables
+Ce projet est un site web complet pour la Résidence Haroun, située à La Ghedhabna-Chebba en Tunisie.  
+Le site permet aux clients de commander en ligne au restaurant, scanner un QR code pour identifier leur table, gérer leur panier, laisser des avis, et découvrir les services de la résidence.
 
-Une interface de gestion de panier
+---
 
-Une section d'avis clients
+## Fonctionnalités principales
 
-Une présentation des services et commodités
+- **Système de commande en ligne**  
+  Menu interactif avec catégories (Pizzas, Sandwichs, Boissons, Desserts)  
+  Panier dynamique avec modification des quantités  
+  Validation et enregistrement des commandes dans Firebase
 
-Fonctionnalités principales
-Système de commande
-Menu interactif avec catégories (Pizzas, Sandwichs, Boissons, Desserts)
+- **Scanner QR Code**  
+  Identification des tables via QR code  
+  Utilisation de la caméra (API MediaDevices) optimisée pour mobile
 
-Panier dynamique avec ajustement des quantités
+- **Avis clients**  
+  Formulaire de notation avec étoiles  
+  Affichage des commentaires clients
 
-Validation de commande avec enregistrement dans Firebase
+- **Présentation**  
+  Galerie photo avec carrousel automatique  
+  Vidéo de présentation  
+  Description des services et commodités de la résidence
 
-Scanner QR Code
-Identification des tables via QR code
+---
 
-Interface caméra optimisée pour mobile
+## Technologies utilisées
 
-Avis clients
-Formulaire d'évaluation avec notation par étoiles
+- Frontend : HTML5, CSS3, JavaScript vanilla  
+- Design responsive (mobile-first) avec animations CSS  
+- Backend (base de données) : Firebase Firestore  
+- Firebase Authentication (optionnel)  
+- Bibliothèque jsQR pour la lecture des QR codes  
+- API MediaDevices pour accéder à la caméra
 
-Affichage des commentaires existants
+---
 
-Présentation
-Galerie photo avec carrousel automatique
+## Installation
 
-Vidéo de présentation
-
-Description des services
-
-Technologies utilisées
-Frontend
-HTML5, CSS3, JavaScript vanilla
-
-Design responsive (mobile-first)
-
-Animations CSS
-
-Backend (données)
-Firebase Firestore (base de données)
-
-Firebase Authentication (optionnel)
-
-Bibliothèques
-jsQR pour la lecture des QR codes
-
-API MediaDevices pour l'accès à la caméra
-
-Installation
-Cloner le dépôt :
-
-bash
+1. Cloner le dépôt  
+```bash
 git clone https://github.com/votre-utilisateur/residence-haroun.git
-Configurer Firebase :
-
-Créer un fichier firebase-config.js avec vos identifiants Firebase
-
-Activer Firestore dans la console Firebase
-
-Hébergement :
-
-Le site peut être hébergé sur Firebase Hosting, Netlify, Vercel ou tout hébergeur statique
-
-Structure des fichiers
-text
-residence-haroun/
-├── index.html          # Page principale
-├── assets/
-│   ├── css/            # Feuilles de style
-│   ├── js/             # Scripts JavaScript
-│   └── images/         # Images du site
-├── firebase-config.js  # Configuration Firebase
-└── README.md           # Ce fichier
-Configuration Firebase
-Remplacer les valeurs dans le script par vos identifiants Firebase :
-
-javascript
-const firebaseConfig = {
-  apiKey: "VOTRE_CLE_API",
-  authDomain: "VOTRE_DOMAINE.firebaseapp.com",
-  projectId: "VOTRE_PROJET",
-  storageBucket: "VOTRE_BUCKET.appspot.com",
-  messagingSenderId: "VOTRE_SENDER_ID",
-  appId: "VOTRE_APP_ID"
-};
